@@ -73,7 +73,7 @@ before_install:
   - ls -a $GOPATH
   - ls -a $GOPATH/bin
   - ls -l $GOPATH/bin/ccat
-  - $GOPATH/bin/ccat
+  - $GOPATH/bin/ccat .travis.yml
 
 install:
   # - composer validate
