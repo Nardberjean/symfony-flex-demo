@@ -71,11 +71,12 @@ before_script:
 
 script:
   - ls --color
-  - ls -R --color bin
-  - ls -R --color config
-  - ls -R --color public
-  - ls -R --color src
-  - ls -R --color var
+  - ls -R --color bin config public src
+  # - ls -R --color var
+  - cat config/packages/*
+  - cat config/packages/dev/*
+  - cat config/packages/test/*
+  - cat src/Kernel.php
   - make serve
   - w3m http://localhost:8000/ | cat
   # - wget --output-document=- http://127.0.0.1:8000
