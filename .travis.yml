@@ -11,26 +11,27 @@ matrix:
   include:
     - php: 7.0 # symfony/skeleton requires ^7.0.8
       env:
-        - PHPUNIT=phpunit
+        # - PHPUNIT=phpunit
         # - TEST_LINT=`true`
         - PHP_CS_FIXER=`true`
         - SENSIO_SECURITY=`true`
     - php: 7.1
       env:
-        - PHPUNIT=phpunit
+        - SYMFONY_VERSION="^3.4@dev"
+        # - PHPUNIT=phpunit
         # - TEST_LINT=`true`
         - PHP_CS_FIXER=`true`
         - SENSIO_SECURITY=`true`
     - php: 7.2
       env:
         - SYMFONY_VERSION="^4.0@dev"
-        - PHPUNIT=phpunit
+        # - PHPUNIT=phpunit
         # - TEST_LINT=`true`
         - SENSIO_SECURITY=`true`
     - php: nightly
       env:
         - SYMFONY_VERSION="^4.0@dev"
-        - PHPUNIT=phpunit
+        # - PHPUNIT=phpunit
         # - TEST_LINT=`true`
         - SENSIO_SECURITY=`true`
   allow_failures:
@@ -66,6 +67,9 @@ install:
 before_script:
 
 script:
+  - ls
+  - ls my-project
+  - make serve
   - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done # Do this first!
   - if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
   - if [[ -v PHP_CS_FIXER ]]; then php .travis/bin/php-cs-fixer --version; fi
