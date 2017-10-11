@@ -4,7 +4,7 @@ addons:
   apt:
     sources:
     # - sourceline: 'ppa:ubuntu-toolchain-r/test'
-    - sourceline: ubuntu-toolchain-r-test
+    - sourceline: ppa:gophers/archive
     packages:
     - python-pygments
     # - highlight
