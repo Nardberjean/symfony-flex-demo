@@ -4,8 +4,8 @@ addons:
   apt:
     packages:
     - python-pygments
-    - highlight
-    - source-highlight
+    # - highlight
+    # - source-highlight
 language: php
 
 cache:
