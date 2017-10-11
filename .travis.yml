@@ -7,6 +7,7 @@ addons:
     # - highlight
     # - source-highlight
 language: php
+language: go
 
 cache:
   directories:
