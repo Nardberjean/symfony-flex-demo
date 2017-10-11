@@ -2,13 +2,14 @@
 sudo: false
 addons:
   apt:
+    sources:
+    - sourceline: 'ppa:ubuntu-toolchain-r/test'
     packages:
     - python-pygments
     # - highlight
     # - source-highlight
     - golang
 language: php
-# language: go
 
 cache:
   directories:
@@ -74,7 +75,7 @@ before_install:
   - ls -a $GOPATH
   - ls -a $GOPATH/bin
   - ls -l $GOPATH/bin/ccat
-  - $GOPATH/bin/ccat .travis.yml
+  # - $GOPATH/bin/ccat .travis.yml
 
 install:
   # - composer validate
@@ -98,7 +99,7 @@ script:
   - $GOPATH/bin/ccat config/packages/routing.yaml
   - $GOPATH/bin/ccat config/packages/dev/routing.yaml
   - $GOPATH/bin/ccat config/packages/test/framework.yaml
-  - $GOPATH/bin/ccat src/Kernel.php
+  # - $GOPATH/bin/ccat src/Kernel.php
   - pygmentize -g src/Kernel.php
   # - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
   # - highlight -O ansi src/Kernel.php
