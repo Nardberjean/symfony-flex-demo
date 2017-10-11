@@ -64,7 +64,8 @@ install:
   # - composer show
   - composer create-project symfony/skeleton my-project
   - cd my-project
-  - pwd
+  - composer require cli # symfony/console
+  - composer require symfony/web-server-bundle # for a better web server
 
 before_script:
 
