@@ -1,5 +1,11 @@
 ---
 sudo: false
+addons:
+  apt:
+    packages:
+    - python-pygments
+    - highlight
+    - source-highlight
 language: php
 
 cache:
@@ -54,7 +60,7 @@ before_install:
   - if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
   - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
   - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
-  - apt-cache policy python-pygments python3-pygments highlight source-highlight
+  - apt-cache policy python-pygments highlight source-highlight
 
 install:
   # - composer validate
@@ -78,7 +84,10 @@ script:
   - cat config/packages/routing.yaml
   - cat config/packages/dev/routing.yaml
   - cat config/packages/test/framework.yaml
-  - cat src/Kernel.php
+  - pygmentize -g src/Kernel.php
+  - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
+  - highlight -O ansi src/Kernel.php
+  - source-highlight --out-format=esc -o STDOUT -i src/Kernel.php
   - make serve
   - w3m http://localhost:8000/ | cat
   # - wget --output-document=- http://127.0.0.1:8000
