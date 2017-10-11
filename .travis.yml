@@ -80,12 +80,13 @@ before_install:
   - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
 
 install:
-  - composer validate
-  - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest; fi
-  - composer install --no-scripts --no-progress --no-suggest
-  - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
-  - composer up --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
-  - composer show
+  # - composer validate
+  # - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest; fi
+  # - composer install --no-scripts --no-progress --no-suggest
+  # - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
+  # - composer up --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
+  # - composer show
+  - composer create-project symfony/skeleton my-project
 
 before_script:
 
