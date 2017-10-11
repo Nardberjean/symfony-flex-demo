@@ -72,7 +72,8 @@ before_install:
   - ls -a ~
   - ls -a $GOPATH
   - ls -a $GOPATH/bin
-  - ls -a $GOPATH/bin/go get -u github.com/jingweno/ccat
+  - ls -l $GOPATH/bin/ccat
+  - $GOPATH/bin/ccat
 
 install:
   # - composer validate
