@@ -74,9 +74,10 @@ script:
   - ls --color
   - ls -R --color bin config public src
   # - ls -R --color var
-  - cat config/packages/*
-  - cat config/packages/dev/*
-  - cat config/packages/test/*
+  - cat config/packages/framework.yaml
+  - cat config/packages/routing.yaml
+  - cat config/packages/dev/routing.yaml
+  - cat config/packages/test/framework.yaml
   - cat src/Kernel.php
   - make serve
   - w3m http://localhost:8000/ | cat
