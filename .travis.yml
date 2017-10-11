@@ -61,6 +61,7 @@ before_install:
   - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
   - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
   - apt-cache policy python-pygments highlight source-highlight
+  - go get -u github.com/jingweno/ccat
 
 install:
   # - composer validate
