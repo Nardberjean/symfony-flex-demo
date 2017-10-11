@@ -4,7 +4,8 @@ addons:
   apt:
     sources:
     # - sourceline: 'ppa:ubuntu-toolchain-r/test'
-    - sourceline: ppa:gophers/archive
+    # - sourceline: ppa:gophers/archive
+    - sourceline: ppa:longsleep/golang-backports
     packages:
     - python-pygments
     # - highlight
@@ -66,6 +67,8 @@ before_install:
   - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
   - apt-cache policy python-pygments highlight source-highlight
   - source-highlight --lang-list || true
+  - which pip
+  - pip install pygments
   # - pushd ~
   # - wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
   # - tar xzf go1.9.1.linux-amd64.tar.gz
