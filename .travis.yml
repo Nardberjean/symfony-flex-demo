@@ -3,7 +3,7 @@ sudo: false
 addons:
   apt:
     sources:
-    - sourceline: 'ppa:ubuntu-toolchain-r/test'
+    # - sourceline: 'ppa:ubuntu-toolchain-r/test'
     packages:
     - python-pygments
     # - highlight
