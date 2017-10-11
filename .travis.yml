@@ -6,8 +6,9 @@ addons:
     - python-pygments
     # - highlight
     # - source-highlight
-# language: php
-language: go
+    - golang
+language: php
+# language: go
 
 cache:
   directories:
