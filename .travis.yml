@@ -70,7 +70,12 @@ install:
 before_script:
 
 script:
-  - ls -R --color
+  - ls --color
+  - ls -R --color bin
+  - ls -R --color config
+  - ls -R --color public
+  - ls -R --color src
+  - ls -R --color var
   - make serve
   - wget --output-document=- http://127.0.0.1:8000
   - wget --output-document=- http://localhost:8000/
