@@ -94,10 +94,11 @@ script:
   - ls --color
   - ls -R --color bin config public src
   # - ls -R --color var
-  - pygmentize -g config/packages/framework.yaml
-  - pygmentize -g config/packages/routing.yaml
-  - pygmentize -g config/packages/dev/routing.yaml
-  - pygmentize -g config/packages/test/framework.yaml
+  - $GOPATH/bin/ccat config/packages/framework.yaml
+  - $GOPATH/bin/ccat config/packages/routing.yaml
+  - $GOPATH/bin/ccat config/packages/dev/routing.yaml
+  - $GOPATH/bin/ccat config/packages/test/framework.yaml
+  - $GOPATH/bin/ccat src/Kernel.php
   - pygmentize -g src/Kernel.php
   # - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
   # - highlight -O ansi src/Kernel.php
