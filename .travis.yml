@@ -1,16 +1,18 @@
 ---
 sudo: false
+# dist: trusty
 addons:
   apt:
     sources:
     # - sourceline: 'ppa:ubuntu-toolchain-r/test'
     # - sourceline: ppa:gophers/archive
-    # - sourceline: ppa:longsleep/golang-backports
+    # - sourceline: ppa:longsleep/golang-backports ######################### '
     packages:
     - python-pygments
     # - highlight
     # - source-highlight
     - golang
+    - snapd
 language: php
 
 cache:
@@ -68,10 +70,13 @@ before_install:
   - apt-cache policy python-pygments highlight source-highlight
   - source-highlight --lang-list || true
   - which pip
-  - pip install pygments
+  - pip install pygments ################### TODO use this!
   # - pushd ~
   # - wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
   # - tar xzf go1.9.1.linux-amd64.tar.gz
+  # - sudo apt-get --yes install snapd
+  # - sudo snap install hugo
+  - snap install --classic go
   - printenv GOPATH
   - go get -u github.com/jingweno/ccat
   - ls -a
