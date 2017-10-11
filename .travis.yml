@@ -5,7 +5,7 @@ addons:
     sources:
     # - sourceline: 'ppa:ubuntu-toolchain-r/test'
     # - sourceline: ppa:gophers/archive
-    - sourceline: ppa:longsleep/golang-backports
+    # - sourceline: ppa:longsleep/golang-backports
     packages:
     - python-pygments
     # - highlight
