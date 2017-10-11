@@ -4,8 +4,8 @@ addons:
   apt:
     packages:
     - python-pygments
-    # - highlight
-    # - source-highlight
+    - highlight
+    - source-highlight
 language: php
 
 cache:
@@ -81,6 +81,8 @@ script:
   - ls -R --color bin config public src
   # - ls -R --color var
   - pygmentize -g config/packages/framework.yaml
+  - highlight -O ansi config/packages/framework.yaml
+  - source-highlight --out-format=esc -o STDOUT -i config/packages/framework.yaml
   - pygmentize -g config/packages/routing.yaml
   - pygmentize -g config/packages/dev/routing.yaml
   - pygmentize -g config/packages/test/framework.yaml
