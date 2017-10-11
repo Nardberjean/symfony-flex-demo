@@ -6,7 +6,7 @@ addons:
     - python-pygments
     # - highlight
     # - source-highlight
-language: php
+# language: php
 language: go
 
 cache:
@@ -63,12 +63,14 @@ before_install:
   - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
   - apt-cache policy python-pygments highlight source-highlight
   - source-highlight --lang-list || true
-  - pushd ~
-  - wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
-  - tar xzf go1.9.1.linux-amd64.tar.gz
+  # - pushd ~
+  # - wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
+  # - tar xzf go1.9.1.linux-amd64.tar.gz
+  - printenv GOPATH
   - go get -u github.com/jingweno/ccat
   - ls -a
   - ls -a ~
+  - ls -a GOPATH
 
 install:
   # - composer validate
