@@ -80,14 +80,14 @@ script:
   - ls --color
   - ls -R --color bin config public src
   # - ls -R --color var
-  - cat config/packages/framework.yaml
-  - cat config/packages/routing.yaml
-  - cat config/packages/dev/routing.yaml
-  - cat config/packages/test/framework.yaml
+  - pygmentize -g config/packages/framework.yaml
+  - pygmentize -g config/packages/routing.yaml
+  - pygmentize -g config/packages/dev/routing.yaml
+  - pygmentize -g config/packages/test/framework.yaml
   - pygmentize -g src/Kernel.php
-  - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
-  - highlight -O ansi src/Kernel.php
-  - source-highlight --out-format=esc -o STDOUT -i src/Kernel.php
+  # - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
+  # - highlight -O ansi src/Kernel.php
+  # - source-highlight --out-format=esc -o STDOUT -i src/Kernel.php
   - make serve
   - w3m http://localhost:8000/ | cat
   # - wget --output-document=- http://127.0.0.1:8000
