@@ -61,7 +61,10 @@ before_install:
   - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
   - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
   - apt-cache policy python-pygments highlight source-highlight
+  - source-highlight --lang-list || true
   - go get -u github.com/jingweno/ccat
+  - ls -a
+  - ls -a ~
 
 install:
   # - composer validate
@@ -82,8 +85,6 @@ script:
   - ls -R --color bin config public src
   # - ls -R --color var
   - pygmentize -g config/packages/framework.yaml
-  - highlight -O ansi config/packages/framework.yaml
-  - source-highlight --out-format=esc -o STDOUT -i config/packages/framework.yaml
   - pygmentize -g config/packages/routing.yaml
   - pygmentize -g config/packages/dev/routing.yaml
   - pygmentize -g config/packages/test/framework.yaml
