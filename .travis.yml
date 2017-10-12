@@ -1,6 +1,6 @@
 ---
-sudo: false
-# dist: trusty
+sudo: true
+dist: trusty
 addons:
   apt:
     sources:
@@ -11,8 +11,8 @@ addons:
     - python-pygments
     # - highlight
     # - source-highlight
-    - golang
-    # - snapd
+    # - golang
+    - snapd
 language: php
 
 cache:
@@ -76,7 +76,7 @@ before_install:
   # - tar xzf go1.9.1.linux-amd64.tar.gz
   # - sudo apt-get --yes install snapd
   # - sudo snap install hugo
-  # - snap install --classic go
+  - snap install --classic go
   - printenv GOPATH
   - go get -u github.com/jingweno/ccat
   - ls -a
@@ -108,7 +108,7 @@ script:
   - $GOPATH/bin/ccat config/packages/routing.yaml
   - $GOPATH/bin/ccat config/packages/dev/routing.yaml
   - $GOPATH/bin/ccat config/packages/test/framework.yaml
-  # - $GOPATH/bin/ccat src/Kernel.php
+  - $GOPATH/bin/ccat src/Kernel.php
   - pygmentize -g src/Kernel.php
   # - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
   # - highlight -O ansi src/Kernel.php
