@@ -104,6 +104,9 @@ script:
   - ls --color
   - ls -R --color bin config public src
   # - ls -R --color var
+  - $GOPATH/bin/ccat config/bundles.php
+  - $GOPATH/bin/ccat config/routes.yaml
+  - $GOPATH/bin/ccat config/services.yaml
   - $GOPATH/bin/ccat config/packages/framework.yaml
   - $GOPATH/bin/ccat config/packages/routing.yaml
   - $GOPATH/bin/ccat config/packages/dev/routing.yaml
