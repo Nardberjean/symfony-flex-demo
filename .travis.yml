@@ -76,7 +76,7 @@ before_install:
   # - tar xzf go1.9.1.linux-amd64.tar.gz
   # - sudo apt-get --yes install snapd
   # - sudo snap install hugo
-  - snap install --classic go
+  - sudo snap install --classic go
   - printenv GOPATH
   - go get -u github.com/jingweno/ccat
   - ls -a
