@@ -114,7 +114,7 @@ script:
   - $GOPATH/bin/ccat config/packages/test/framework.yaml
   - $GOPATH/bin/ccat src/Kernel.php
   - pygmentize -g src/Kernel.php
-  - php -s src/Kernel.php | elinks -force-html -dump-color-mode
+  - php -s src/Kernel.php | elinks -force-html -dump-color-mode 4
   # - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
   # - highlight -O ansi src/Kernel.php
   # - source-highlight --out-format=esc -o STDOUT -i src/Kernel.php
