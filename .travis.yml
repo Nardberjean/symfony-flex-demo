@@ -8,6 +8,7 @@ addons:
     # - sourceline: 'ppa:gophers/archive'
     # - sourceline: 'ppa:longsleep/golang-backports'
     packages:
+    - elinks
     - python-pygments
     # - highlight
     # - source-highlight
