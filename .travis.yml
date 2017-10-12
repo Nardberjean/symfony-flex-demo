@@ -1,6 +1,6 @@
 ---
-sudo: true
-dist: trusty
+sudo: false
+# dist: trusty
 addons:
   apt:
     sources:
