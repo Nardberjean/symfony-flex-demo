@@ -6,13 +6,13 @@ addons:
     sources:
     # - sourceline: 'ppa:ubuntu-toolchain-r/test'
     - sourceline: 'ppa:gophers/archive'
-    # - sourceline: ppa:longsleep/golang-backports ######################### '
+    - sourceline: 'ppa:longsleep/golang-backports'
     packages:
     - python-pygments
     # - highlight
     # - source-highlight
     - golang
-    - snapd
+    # - snapd
 language: php
 
 cache:
@@ -74,9 +74,9 @@ before_install:
   # - pushd ~
   # - wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
   # - tar xzf go1.9.1.linux-amd64.tar.gz
-  - sudo apt-get --yes install snapd
+  # - sudo apt-get --yes install snapd
   # - sudo snap install hugo
-  - snap install --classic go
+  # - snap install --classic go
   - printenv GOPATH
   - go get -u github.com/jingweno/ccat
   - ls -a
