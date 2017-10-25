@@ -54,6 +54,7 @@ matrix:
 
 before_install:
   - apt-cache policy golang
+  - which go | true
   - ls -l --color /home/travis/.gimme/versions
   - ls -l --color /home/travis/.gimme/versions/go1.7.4.linux.amd64/src
   # - ls --color /home/travis/gopath/src
