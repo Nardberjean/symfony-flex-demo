@@ -53,7 +53,7 @@ matrix:
     - php: nightly
 
 before_install:
-  - go install 1.8.x
+  - go install 1.8.3 # https://docs.travis-ci.com/user/reference/trusty/
   - echo $PHPUNIT
   - pwd
   - echo $HOME
