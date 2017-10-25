@@ -57,7 +57,7 @@ before_install:
   - ls -l --color /home/travis/.gimme/versions
   - ls -l --color /home/travis/.gimme/versions/go1.7.4.linux.amd64/src
   # - ls --color /home/travis/gopath/src
-  - go install go1.7.4 # https://docs.travis-ci.com/user/reference/trusty/
+  - go install 1.x # https://docs.travis-ci.com/user/reference/trusty/
   - echo $PHPUNIT
   - pwd
   - echo $HOME
