@@ -53,7 +53,7 @@ matrix:
     - php: nightly
 
 before_install:
-  - go install 1.x
+  - go install 1.8.x
   - echo $PHPUNIT
   - pwd
   - echo $HOME
