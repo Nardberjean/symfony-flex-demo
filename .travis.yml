@@ -64,6 +64,7 @@ before_install:
   - /home/travis/.gimme/versions/go1.7.4.linux.amd64/bin/go version || true
   - gimme || true # https://github.com/travis-ci/gimme
   - which gimme || true
+  - gimme help
   - gimme list
   - gimme stable
   - gimme list
