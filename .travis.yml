@@ -53,7 +53,10 @@ matrix:
     - php: nightly
 
 before_install:
-  - go install 1.8.3 # https://docs.travis-ci.com/user/reference/trusty/
+  - apt-cache policy golang
+  - ls --color /home/travis/.gimme/versions/go1.7.4.linux.amd64/src
+  - ls --color /home/travis/gopath/src
+  - go install 1.7.4 # https://docs.travis-ci.com/user/reference/trusty/
   - echo $PHPUNIT
   - pwd
   - echo $HOME
