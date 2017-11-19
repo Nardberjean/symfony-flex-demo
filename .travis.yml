@@ -1,5 +1,5 @@
 ---
-sudo: true
+sudo: false
 dist: trusty
 addons:
   apt:
@@ -9,7 +9,7 @@ addons:
     # - sourceline: 'ppa:longsleep/golang-backports'
     packages:
     - elinks
-    - python-pygments
+    # - python-pygments
     # - highlight
     # - source-highlight
     # - golang
