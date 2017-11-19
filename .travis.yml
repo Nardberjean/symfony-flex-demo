@@ -55,6 +55,8 @@ matrix:
 before_install:
   - apt-cache policy golang
   - which python3 || true
+  - ls --color /opt/pyenv/shims
+  - ls --color /opt/pyenv
   - python3 --version
   - pwd
   - python3 -m venv $(pwd)
