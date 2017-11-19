@@ -144,7 +144,7 @@ script:
   # - highlight -O ansi src/Kernel.php
   # - source-highlight --out-format=esc -o STDOUT -i src/Kernel.php
   - bin/console
-  - bin/console server start
+  - bin/console server:start
   - make serve
   - w3m http://localhost:8000/ | cat
   # - wget --output-document=- http://127.0.0.1:8000
