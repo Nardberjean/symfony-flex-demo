@@ -58,7 +58,7 @@ before_install:
   - ls --color /opt/pyenv/shims
   - ls --color /opt/pyenv
   - python3 --version
-  - pyvenv ~/venv # python3 -m venv # in Python 3.6
+  - pyvenv-3.5 ~/venv # python3 -m venv # in Python 3.6
   - which go || true
   - ls -l --color /home/travis/.gimme/versions
   - ls -l --color /home/travis/.gimme/versions/go1.7.4.linux.amd64/src
