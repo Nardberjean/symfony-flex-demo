@@ -54,6 +54,7 @@ matrix:
 
 before_install:
   - apt-cache policy golang
+  - which python3 || true
   - which go || true
   - ls -l --color /home/travis/.gimme/versions
   - ls -l --color /home/travis/.gimme/versions/go1.7.4.linux.amd64/src
@@ -91,7 +92,7 @@ before_install:
   - apt-cache policy python-pygments highlight source-highlight
   - source-highlight --lang-list || true
   - which pip
-  - pip install pygments ################### TODO use this!
+  # - pip install pygments ################### TODO use this (instead of apt-get) but now pygmentize is no more used right here.
   # - pushd ~
   # - wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
   # - tar xzf go1.9.1.linux-amd64.tar.gz
@@ -133,7 +134,7 @@ script:
   - $GOPATH/bin/ccat config/packages/dev/routing.yaml
   - $GOPATH/bin/ccat config/packages/test/framework.yaml
   - $GOPATH/bin/ccat src/Kernel.php
-  - pygmentize -g src/Kernel.php
+  # - pygmentize -g src/Kernel.php
   - php -s src/Kernel.php | elinks -force-html -dump-color-mode 4 -dump
   # - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
   # - highlight -O ansi src/Kernel.php
