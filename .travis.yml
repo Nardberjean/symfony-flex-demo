@@ -1,20 +1,9 @@
 ---
-sudo: false
-dist: trusty
+language: php
 addons:
   apt:
-    sources:
-    # - sourceline: 'ppa:ubuntu-toolchain-r/test'
-    # - sourceline: 'ppa:gophers/archive'
-    # - sourceline: 'ppa:longsleep/golang-backports'
     packages:
-    - elinks
-    # - python-pygments # may be far easyier than pip install then the travis language is not python and few python packages are requested!
-    # - highlight
-    # - source-highlight
-    # - golang
-    # - snapd
-language: php
+    - elinks # For dysplaying php files on console.
 
 cache:
   directories:
@@ -23,145 +12,105 @@ cache:
 matrix:
   fast_finish: true
   include:
-    - php: 7.0 # symfony/skeleton requires ^7.0.8
-      env:
-        # - PHPUNIT=phpunit
-        # - TEST_LINT=`true`
-        # - PHP_CS_FIXER=`true`
-        - SENSIO_SECURITY=`true`
-    - php: 7.1
-      env:
-        - SYMFONY_VERSION="^3.4@beta"
-        # - PHPUNIT=phpunit
-        # - TEST_LINT=`true`
-        # - PHP_CS_FIXER=`true`
-        - SENSIO_SECURITY=`true`
-    - php: 7.2
-      env:
-        - SYMFONY_VERSION="^4.0@beta"
-        # - PHPUNIT=phpunit
-        # - TEST_LINT=`true`
-        - SENSIO_SECURITY=`true`
-    - php: nightly
-      env:
-        - SYMFONY_VERSION="^4.0@beta"
-        # - PHPUNIT=phpunit
-        # - TEST_LINT=`true`
-        - SENSIO_SECURITY=`true`
+  - php: 7.0 # symfony/skeleton requires ^7.0.8
+    env:
+    # - PHPUNIT=phpunit
+    # - TEST_LINT=`true`
+    # - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.1
+    env:
+    - SYMFONY_VERSION="^3.4@beta"
+    # - PHPUNIT=phpunit
+    # - TEST_LINT=`true`
+    # - PHP_CS_FIXER=`true`
+    - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_VERSION="^4.0@beta"
+    # - PHPUNIT=phpunit
+    # - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
+  - php: nightly
+    env:
+    - SYMFONY_VERSION="^4.0@beta"
+    # - PHPUNIT=phpunit
+    # - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
   allow_failures:
-    - php: 7.2
-    - php: nightly
+  - php: 7.2
+  - php: nightly
 
 before_install:
-  - apt-cache policy golang
-  - which python3 || true
-  - ls --color /opt/pyenv/shims
-  - ls --color /opt/pyenv
-  - python3 --version
-  # does not work # - pyvenv-3.5 ~/venv # python3 -m venv # in Python 3.6
-  - which go || true
-  - ls -l --color /home/travis/.gimme/versions
-  - ls -l --color /home/travis/.gimme/versions/go1.7.4.linux.amd64/src
-  - ls -l --color /home/travis/.gimme/versions/go1.7.4.linux.amd64/bin
-  # - ls --color /home/travis/gopath/src
-  - go version || true
-  - /home/travis/.gimme/versions/go1.7.4.linux.amd64/bin/go || true
-  - /home/travis/.gimme/versions/go1.7.4.linux.amd64/bin/go version || true
-  - gimme || true # https://github.com/travis-ci/gimme
-  - which gimme || true
-  - gimme help
-  - gimme list
-  - gimme stable
-  - gimme list
-  - go version
-  - gimme force stable
-  - gimme list
-  - go version
-  # - go install 1.x # https://docs.travis-ci.com/user/reference/trusty/
-  - echo $PHPUNIT
-  - pwd
-  - echo $HOME
-  - echo $TRAVIS_PHP_VERSION
-  - which composer
-  - ls /tmp
-  - php --ini
-  - xdebug=/home/travis/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/xdebug.ini
-  - if [[ -f $xdebug ]]; then cat $xdebug; cp $xdebug /tmp; phpenv config-rm xdebug.ini; fi
-  - xdebug_php=
-  - if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
-  - install --directory .travis/bin
-  - if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
-  - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
-  - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
-  - apt-cache policy python-pygments highlight source-highlight
-  - source-highlight --lang-list || true
-  - which pip
-  # - pip install pygments ################### TODO use this (instead of apt-get) but now pygmentize is no more used right here.
-  # - pushd ~
-  # - wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
-  # - tar xzf go1.9.1.linux-amd64.tar.gz
-  # - sudo apt-get --yes install snapd
-  # - sudo snap install hugo
-  # - sudo snap install --classic go
-  - printenv GOPATH
-  - go get -u github.com/jingweno/ccat
-  - ls -a
-  - ls -a ~
-  - ls -a $GOPATH
-  - ls -a $GOPATH/bin
-  - ls -l $GOPATH/bin/ccat
-  # - $GOPATH/bin/ccat .travis.yml
+- echo $PHPUNIT
+- pwd
+- echo $HOME
+- echo $TRAVIS_PHP_VERSION
+- which composer
+- ls /tmp
+- php --ini
+
+- xdebug=/home/travis/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/xdebug.ini
+- if [[ -f $xdebug ]]; then cat $xdebug; cp $xdebug /tmp; phpenv config-rm xdebug.ini; fi
+- xdebug_php=
+- if [[ -f /tmp/xdebug.ini ]]; then xdebug_php='-c /tmp/xdebug.ini'; fi
+- install --directory .travis/bin
+- if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
+- if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
+- if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
+
+# - pip install pygments ################### TODO use this (instead of apt-get) but now pygmentize is no more used right here.
+
+- go get -u github.com/jingweno/ccat
+# - $GOPATH/bin/ccat .travis.yml
 
 install:
-  # - composer validate
-  # - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest; fi
-  # - composer install --no-scripts --no-progress --no-suggest
-  # - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
-  # - composer up --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
-  - composer create-project symfony/skeleton my-project # in Symfony 4 there is a symfony command instead!
-  - cd my-project
-  - composer require cli # symfony/console
-  - composer require symfony/web-server-bundle # for a better web server
-  - composer show
-  - bin/console
+# - composer validate
+# - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/symfony:${SYMFONY_VERSION} --no-scripts --no-progress --no-suggest; fi
+# - composer install --no-scripts --no-progress --no-suggest
+# - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
+# - composer up --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
+- composer create-project symfony/skeleton my-project # in Symfony 4 there is a symfony command instead!
+- cd my-project
+- composer require cli # symfony/console
+- composer require symfony/web-server-bundle # for a better web server
 
 before_script:
+- composer show
+- bin/console
+
+- ls --color
+- ls -R --color bin config public src
+# - ls -R --color var
+- $GOPATH/bin/ccat config/bundles.php
+- $GOPATH/bin/ccat config/routes.yaml
+- $GOPATH/bin/ccat config/services.yaml
+- $GOPATH/bin/ccat config/packages/framework.yaml
+- $GOPATH/bin/ccat config/packages/routing.yaml
+- $GOPATH/bin/ccat config/packages/dev/routing.yaml
+- $GOPATH/bin/ccat config/packages/test/framework.yaml
+- $GOPATH/bin/ccat src/Kernel.php
+- php -s src/Kernel.php | elinks -force-html -dump-color-mode 4 -dump
 
 script:
-  - ls --color
-  - ls -R --color bin config public src
-  # - ls -R --color var
-  - $GOPATH/bin/ccat config/bundles.php
-  - $GOPATH/bin/ccat config/routes.yaml
-  - $GOPATH/bin/ccat config/services.yaml
-  - $GOPATH/bin/ccat config/packages/framework.yaml
-  - $GOPATH/bin/ccat config/packages/routing.yaml
-  - $GOPATH/bin/ccat config/packages/dev/routing.yaml
-  - $GOPATH/bin/ccat config/packages/test/framework.yaml
-  - $GOPATH/bin/ccat src/Kernel.php
-  # - pygmentize -g src/Kernel.php
-  - php -s src/Kernel.php | elinks -force-html -dump-color-mode 4 -dump
-  # - pygmentize -g -O style=colorful,linenos=1 src/Kernel.php
-  # - highlight -O ansi src/Kernel.php
-  # - source-highlight --out-format=esc -o STDOUT -i src/Kernel.php
-  - bin/console server:start
-  # - make serve # would need a Makefile !
-  - w3m http://localhost:8000/ | cat || true # no webpage defined right now!
-  # - wget --output-document=- http://127.0.0.1:8000
-  - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done # Do this first!
-  - if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
-  - if [[ -v PHP_CS_FIXER ]]; then php ../.travis/bin/php-cs-fixer --version; fi
-  # --stop-on-violation
-  - if [[ -v PHP_CS_FIXER ]]; then php ../.travis/bin/php-cs-fixer fix --diff --dry-run -vvv --using-cache=no; fi
-  - if [[ -v PHPUNIT ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php ../.travis/bin/$PHPUNIT; fi
+- bin/console server:start
+# - make serve # would need a Makefile !
+- w3m http://localhost:8000/ | cat || true # no webpage defined right now! (try also elinks)
+# - wget --output-document=- http://127.0.0.1:8000
+- for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done # Do this first!
+- if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
+- if [[ -v PHP_CS_FIXER ]]; then php ../.travis/bin/php-cs-fixer --version; fi
+# --stop-on-violation
+- if [[ -v PHP_CS_FIXER ]]; then php ../.travis/bin/php-cs-fixer fix --diff --dry-run -vvv --using-cache=no; fi
+- if [[ -v PHPUNIT ]]; then php --ini -c /tmp/xdebug.ini; php $xdebug_php ../.travis/bin/$PHPUNIT; fi
 
-  - if [[ -v SENSIO_SECURITY ]]; then php ../.travis/bin/security-checker security:check --end-point=http://security.sensiolabs.org/check_lock; fi
-    #^ This checks that the application doesn't use dependencies with known security vulnerabilities
-  - if [[ -v VENDOR_LINT ]]; then for f in $(find ./vendor -name \*.php); do php -l $f > /dev/null; done; fi
-    #^ Should be the last line of install but sometimes long to execute and little can be done for errors found.
+- if [[ -v SENSIO_SECURITY ]]; then php ../.travis/bin/security-checker security:check --end-point=http://security.sensiolabs.org/check_lock; fi
+  #^ This checks that the application doesn't use dependencies with known security vulnerabilities
+- if [[ -v VENDOR_LINT ]]; then for f in $(find ./vendor -name \*.php); do php -l $f > /dev/null; done; fi
+  #^ Should be the last line of install but sometimes long to execute and little can be done for errors found.
 
 after_success:
-    - bash <(curl -s https://codecov.io/bash) -s /tmp
+- bash <(curl -s https://codecov.io/bash) -s /tmp
 
 # inspirated from:
   # symfony/symfony-demo
