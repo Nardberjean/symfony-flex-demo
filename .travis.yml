@@ -76,7 +76,7 @@ install:
 - composer require symfony/web-server-bundle # for a better web server
 
 before_script:
-# - composer require annotations
+- composer require annotations #  [ERROR] Missing package: to use the make:controller command
 # - composer require --dev profiler
 # - composer require twig
 # - composer require orm
