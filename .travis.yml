@@ -14,7 +14,7 @@ matrix:
   include:
   - php: 7.0 # symfony/skeleton requires ^7.0.8
     env:
-    - SYMFONY_VERSION="^2.8"
+    # - SYMFONY_VERSION="^3.4" only one version of skeleton working with php 7.0
     # - PHPUNIT=phpunit
     # - TEST_LINT=`true`
     # - PHP_CS_FIXER=`true`
@@ -34,7 +34,7 @@ matrix:
     - SENSIO_SECURITY=`true`
   - php: nightly
     env:
-    - SYMFONY_VERSION="^4.1@dev"
+    - SYMFONY_VERSION="dev-master@dev"
     # - PHPUNIT=phpunit
     # - TEST_LINT=`true`
     - SENSIO_SECURITY=`true`
@@ -72,7 +72,7 @@ install:
 # - composer install --no-scripts --no-progress --no-suggest
 # - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
 # - composer up --no-progress --no-suggest --optimize-autoloader --apcu-autoloader
-- composer create-project symfony/skeleton my-project # in Symfony 4 there is a symfony command instead!
+- composer create-project symfony/skeleton my-project SYMFONY_VERSION # in Symfony 4 there is a symfony command instead!
 - cd my-project
 - composer require cli # symfony/console
 - composer require symfony/web-server-bundle # for a better web server
