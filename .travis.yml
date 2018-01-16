@@ -58,7 +58,7 @@ before_install:
 - if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
 - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
 - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
-- if [[ -v SENSIO_SECURITY ]]; then php ../.travis/bin/security-checker --version; fi
+- if [[ -v SENSIO_SECURITY ]]; then php .travis/bin/security-checker --version; fi
 
 # - pip install pygments ################### TODO use this (instead of apt-get) but now pygmentize is no more used right here.
 
