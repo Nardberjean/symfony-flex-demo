@@ -58,6 +58,7 @@ before_install:
 - if [[ -v PHP_CS_FIXER ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar --output-document=.travis/bin/php-cs-fixer; fi
 - if [[ -v PHPUNIT ]]; then wget https://phar.phpunit.de/${PHPUNIT}.phar --output-document=.travis/bin/$PHPUNIT; fi
 - if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
+- if [[ -v SENSIO_SECURITY ]]; then php ../.travis/bin/security-checker --version; fi
 
 # - pip install pygments ################### TODO use this (instead of apt-get) but now pygmentize is no more used right here.
 
@@ -107,7 +108,7 @@ script:
 # - wget --output-document=- http://127.0.0.1:8000
 - bin/console make:controller Pizza
 - w3m http://localhost:8000/pizza | cat || true
-- for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done # Do this first!
+# - for f in $(find . -path './vendor' -prune -o -path './tests' -prune -o -name \*.php -print) ; do php -l $f ; done # Do this first, but need?
 - if [[ -v TEST_LINT ]]; then for f in $(find ./tests -name \*.php -print); do php -l $f; done; fi
 - if [[ -v PHP_CS_FIXER ]]; then php ../.travis/bin/php-cs-fixer --version; fi
 # --stop-on-violation
