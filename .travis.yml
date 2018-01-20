@@ -45,7 +45,7 @@ install:
 - composer create-project --no-install symfony/skeleton my-project $SKELETON_VERSION
 - cd my-project
 # - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/console:$SYMFONY_VERSION symfony/framework-bundle:$SYMFONY_VERSION symfony/yaml:$SYMFONY_VERSION; else composer install; fi
-- if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove symfony/lts; else composer install; fi
+- if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --update-with-dependencies symfony/lts; else composer install; fi
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
 - composer require cli # symfony/console
 - composer require symfony/web-server-bundle # for a better web server
