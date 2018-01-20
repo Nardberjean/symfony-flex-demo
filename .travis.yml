@@ -46,7 +46,11 @@ install:
 - cd my-project
 # - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/console:$SYMFONY_VERSION symfony/framework-bundle:$SYMFONY_VERSION symfony/yaml:$SYMFONY_VERSION; else composer install; fi
 - if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --no-update symfony/lts; fi
+- composer why symfony/http-kernel
+- composer why-not symfony/http-kernel 4.1
 - composer update
+- composer why symfony/http-kernel
+- composer why-not symfony/http-kernel 4.1
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
 - composer require cli # symfony/console
 - composer require symfony/web-server-bundle # for a better web server
@@ -61,8 +65,6 @@ install:
 
 before_script:
 - composer show
-- composer why symfony/http-kernel
-- composer why-not symfony/http-kernel 4.1
 
 - bin/console
 - ls --color
