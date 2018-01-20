@@ -32,6 +32,12 @@ matrix:
     # - PHPUNIT=phpunit
     # - TEST_LINT=`true`
     - SENSIO_SECURITY=`true`
+  - php: 7.2
+    env:
+    - SYMFONY_VERSION="dev-master@dev"
+    # - PHPUNIT=phpunit
+    # - TEST_LINT=`true`
+    - SENSIO_SECURITY=`true`
   - php: nightly
     env:
     - SENSIO_SECURITY=`true`
@@ -44,6 +50,7 @@ matrix:
   allow_failures:
   - php: 7.3
   - php: nightly
+  - env: SYMFONY_VERSION="dev-master@dev"
 
 before_install:
 - echo $PHPUNIT
