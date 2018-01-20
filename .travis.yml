@@ -42,7 +42,7 @@ install:
 #^ in Symfony 4 there is a symfony command instead! (is it an urban legend?)
 - composer create-project --no-install symfony/skeleton my-project $SKELETON_VERSION
 - cd my-project
-- if [[ -v LTS_VERSION ]]; then composer require symfony/console:$SYMFONY_VERSION symfony/framework-bundle:$SYMFONY_VERSION symfony/yaml:$SYMFONY_VERSION; else composer install; fi
+- if [[ -v SYMFONY_VERSION ]]; then composer require symfony/console:$SYMFONY_VERSION symfony/framework-bundle:$SYMFONY_VERSION symfony/yaml:$SYMFONY_VERSION; else composer install; fi
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
 - composer require cli # symfony/console
 - composer require symfony/web-server-bundle # for a better web server
