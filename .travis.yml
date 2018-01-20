@@ -49,6 +49,7 @@ install:
 - composer update --with-all-dependencies
 - composer why symfony/http-kernel
 - composer why-not symfony/http-kernel 4.1
+- composer show
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
 - composer require cli # symfony/console
 - composer require symfony/web-server-bundle # for a better web server
