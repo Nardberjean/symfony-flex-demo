@@ -48,7 +48,7 @@ install:
 - if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --no-update symfony/lts; fi
 - composer why symfony/http-kernel
 - composer why-not symfony/http-kernel 4.1
-- composer update
+- composer update --with-all-dependencies
 - composer why symfony/http-kernel
 - composer why-not symfony/http-kernel 4.1
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
