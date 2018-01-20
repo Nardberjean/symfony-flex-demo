@@ -60,6 +60,9 @@ install:
 
 before_script:
 - composer show
+- composer why symfony/http-kernel
+- composer why-not symfony/http-kernel 4.1
+
 - bin/console
 - ls --color
 - ls -R --color bin config public src
