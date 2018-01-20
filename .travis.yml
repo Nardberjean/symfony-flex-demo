@@ -28,8 +28,8 @@ matrix:
 before_install:
 - install --directory .travis/bin
 # - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
-- if [[ -v SENSIO_SECURITY ]]; then wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker; fi
-- if [[ -v SENSIO_SECURITY ]]; then php .travis/bin/security-checker --version; fi
+- wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker
+- .travis/bin/security-checker --version
 
 # - pip install pygments # but now pygmentize is no more used right here.
 - go get -u github.com/jingweno/ccat
