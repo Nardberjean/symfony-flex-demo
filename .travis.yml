@@ -15,7 +15,7 @@ php: # symfony/skeleton requires ^7.0.8
 - nightly
 
 env:
-- SKELETON_VERSION="^3.0"
+# - SKELETON_VERSION="^3.0"
 
 matrix:
   fast_finish: true
@@ -42,7 +42,7 @@ install:
 #^ in Symfony 4 there is a symfony command instead! (is it an urban legend?)
 - composer create-project --no-install symfony/skeleton my-project $SKELETON_VERSION
 - cd my-project
-- composer require symfony/lts $LTS_VERSION
+- if [[ -v LTS_VERSION ]]; then composer require symfony/lts $LTS_VERSION; else composer install; fi
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
 - composer require cli # symfony/console
 - composer require symfony/web-server-bundle # for a better web server
