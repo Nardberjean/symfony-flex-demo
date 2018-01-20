@@ -8,46 +8,21 @@ addons:
 cache:
   directories:
     - $HOME/.composer/cache/files
+php: # symfony/skeleton requires ^7.0.8
+- 7.0 # SYMFONY_VERSION="^3.4" only one version of skeleton working with php 7.0
+- 7.1
+- 7.2
+- nightly
 
-# env: # important!
 matrix:
   fast_finish: true
   include:
-  - php: 7.0 # symfony/skeleton requires ^7.0.8
-    env:
-    # - SYMFONY_VERSION="^3.4" only one version of skeleton working with php 7.0
-    # - PHPUNIT=phpunit
-    # - TEST_LINT=`true`
-    # - PHP_CS_FIXER=`true`
-    # - SENSIO_SECURITY=`true` # v4.1.7 incompatible with php 7.0
   - php: 7.1
     env:
     - SYMFONY_VERSION="^3.4"
-    # - PHPUNIT=phpunit
-    # - TEST_LINT=`true`
-    # - PHP_CS_FIXER=`true`
-    - SENSIO_SECURITY=`true`
-  - php: 7.2
-    env:
-    - SYMFONY_VERSION="^4.0"
-    # - PHPUNIT=phpunit
-    # - TEST_LINT=`true`
-    - SENSIO_SECURITY=`true`
   - php: 7.2
     env:
     - SYMFONY_VERSION="dev-master@dev"
-    # - PHPUNIT=phpunit
-    # - TEST_LINT=`true`
-    # - SENSIO_SECURITY=`true`
-  - php: nightly
-    env:
-    - SENSIO_SECURITY=`true`
-  - php: nightly
-    env:
-    - SYMFONY_VERSION="dev-master@dev"
-    # - PHPUNIT=phpunit
-    # - TEST_LINT=`true`
-    - SENSIO_SECURITY=`true`
   allow_failures:
   - php: 7.2
     env:
