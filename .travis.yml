@@ -37,7 +37,7 @@ matrix:
     - SYMFONY_VERSION="dev-master@dev"
     # - PHPUNIT=phpunit
     # - TEST_LINT=`true`
-    - SENSIO_SECURITY=`true`
+    # - SENSIO_SECURITY=`true`
   - php: nightly
     env:
     - SENSIO_SECURITY=`true`
