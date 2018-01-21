@@ -43,7 +43,7 @@ install:
 - composer install # --with-all-dependencies
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
 
-- composer require symfony/web-server-bundle # for a better web server
+- composer require --dev symfony/web-server-bundle
 
 - composer require annotations #  [ERROR] Missing package: to use the make:controller command
 # - composer require --dev profiler
