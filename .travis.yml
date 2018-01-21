@@ -22,7 +22,6 @@ matrix:
   include:
   - php: 7.2
     env: SKELETON_VERSION="dev-master@dev"
-    # env: SYMFONY_VERSION="^4.1@dev"
   allow_failures:
   - php: 7.0 # sensiolabs/security-checker 4.1.7
   - php: 7.3
@@ -44,38 +43,10 @@ install:
 #^ in Symfony 4 there is a symfony command instead! (is it an urban legend?)
 - composer create-project --no-install symfony/skeleton my-project $SKELETON_VERSION
 - cd my-project
-# - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/console:$SYMFONY_VERSION symfony/framework-bundle:$SYMFONY_VERSION symfony/yaml:$SYMFONY_VERSION; else composer install; fi
 - if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --no-update symfony/lts; fi
-- if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer require --no-update symfony/http-kernel:^4.1; fi
-- composer update --with-all-dependencies
-- composer why symfony/http-kernel
-- composer why-not symfony/http-kernel 4.1
-
-- composer why symfony/cache
-- composer why-not symfony/cache 4.1
-- composer why symfony/config
-- composer why-not symfony/config 4.1
-- composer why symfony/debug
-- composer why-not symfony/debug 4.1
-- composer why symfony/dependency-injection
-- composer why-not symfony/dependency-injection 4.1
-- composer why symfony/dotenv
-- composer why-not symfony/dotenv 4.1
-- composer why symfony/event-dispatcher
-- composer why-not symfony/event-dispatcher 4.1
-- composer why symfony/filesystem
-- composer why-not symfony/filesystem 4.1
-- composer why symfony/finder
-- composer why-not symfony/finder 4.1
-- composer why symfony/http-foundation
-- composer why-not symfony/http-foundation 4.1
-- composer why symfony/routing
-- composer why-not symfony/routing 4.1
-- composer why symfony/yaml
-- composer why-not symfony/yaml 4.1
-
-- composer show
+- composer install # --with-all-dependencies
 #^ Only needed (for Symfony dev versions) then create-project is called with --no-install.
+
 - composer require cli # symfony/console
 - composer require symfony/web-server-bundle # for a better web server
 
