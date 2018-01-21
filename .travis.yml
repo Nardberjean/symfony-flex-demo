@@ -46,7 +46,7 @@ install:
 
 - composer require --dev symfony/web-server-bundle
 
-# - composer require annotations #  [ERROR] Missing package: to use the make:controller command
+- composer require annotations #  [ERROR] Missing package: to use the make:controller command
 # - composer require --dev profiler
 # - composer require twig
 # - composer require orm
