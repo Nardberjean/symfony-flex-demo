@@ -52,7 +52,7 @@ install:
 # - composer require orm
 # - composer require form
 # - composer require form validator
-- composer require maker-bundle
+- composer require --dev maker-bundle
 
 before_script:
 - composer show
