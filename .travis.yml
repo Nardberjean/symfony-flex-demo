@@ -46,6 +46,7 @@ install:
 - cd my-project
 # - if [[ -v SYMFONY_VERSION ]]; then composer require symfony/console:$SYMFONY_VERSION symfony/framework-bundle:$SYMFONY_VERSION symfony/yaml:$SYMFONY_VERSION; else composer install; fi
 - if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer remove --no-update symfony/lts; fi
+- if [ "dev-master@dev" = $SKELETON_VERSION ]; then composer require --no-update symfony/http-kernel:^4.1; fi
 - composer update --with-all-dependencies
 - composer why symfony/http-kernel
 - composer why-not symfony/http-kernel 4.1
@@ -66,8 +67,6 @@ install:
 - composer why-not symfony/filesystem 4.1
 - composer why symfony/finder
 - composer why-not symfony/finder 4.1
-- composer why symfony/flex
-- composer why-not symfony/flex 4.1
 - composer why symfony/http-foundation
 - composer why-not symfony/http-foundation 4.1
 - composer why symfony/routing
