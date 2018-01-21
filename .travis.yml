@@ -45,13 +45,15 @@ install:
 
 - composer require --dev symfony/web-server-bundle
 
-- composer require annotations #  [ERROR] Missing package: to use the make:controller command
+# - composer require annotations #  [ERROR] Missing package: to use the make:controller command
 # - composer require --dev profiler
 # - composer require twig
 # - composer require orm
 # - composer require form
 # - composer require form validator
-- composer require maker-bundle
+- composer require maker-bundle | true
+- empty -f composer require maker-bundle
+- empty -w Missing
 
 before_script:
 - composer show
