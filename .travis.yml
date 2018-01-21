@@ -77,7 +77,8 @@ script:
 - w3m http://localhost:8000/ | cat # no webpage defined right now! (try also elinks)
 - elinks http://localhost:8000/ -dump-color-mode 4 -dump
 
-- bin/console make:controller Pizza
+- empty -f bin/console make:controller Pizza
+- empty -w "composer require annotations" ; if [ $? -eq 1 ]; then composer require annotations; bin/console make:controller Pizza; fi
 - w3m http://localhost:8000/pizza | cat
 - elinks http://localhost:8000/pizza -dump-color-mode 4 -dump
 
