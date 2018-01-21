@@ -4,6 +4,7 @@ addons:
   apt:
     packages:
     - elinks # For dysplaying php files on console.
+    - empty-expect
 
 cache:
   directories:
