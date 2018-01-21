@@ -75,8 +75,9 @@ before_script:
 script:
 - bin/console server:start
 # - make serve # would need a Makefile !
-- w3m http://localhost:8000/ | cat # no webpage defined right now! (try also elinks)
+- sleep .01
 - elinks http://localhost:8000/ -dump-color-mode 4 -dump
+- w3m http://localhost:8000/ | cat # no webpage defined right now! (try also elinks)
 
 - empty -f bin/console make:controller Pizza
 - empty -w "composer require annotations" ; if [ $? -eq 1 ]; then composer require annotations; bin/console make:controller Pizza; fi
